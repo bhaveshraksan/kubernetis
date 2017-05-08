@@ -1,0 +1,25 @@
+git clone
+sudo vagrant up
+sudo vagrant status
+curl -L http://172.18.18.101:2379/version
+
+wait for some time depending on net speed
+
+kubectl config set-cluster vagrant-cluster --server=http://172.18.18.101:8080
+kubectl config set-context vagrant-system --cluster=vagrant-cluster
+kubectl config use-context vagrant-system
+kubectl cluster-info
+
+
+
+kubectl apply -f calico.yaml
+kubectl apply -f skydns.yaml 
+kubectl apply -f kubernetes-dashboard.yaml 
+
+kubectl get pods --namespace=kube-system
+
+wait for some time till all pods are running
+
+
+
+
