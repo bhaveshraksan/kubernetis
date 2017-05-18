@@ -1,0 +1,22 @@
+{
+  "kind": "Endpoints",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "glusterfs-cluster",
+    "namespace": "fieldeagles"
+  },
+  "subsets": [
+    {
+      "addresses": [
+        {
+          "ip": "192.168.56.1"
+        }
+      ],
+      "ports": [
+        {
+          "port": 5555
+        }
+      ]
+    }
+  ]
+}

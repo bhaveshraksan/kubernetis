@@ -1,0 +1,13 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "glusterfs-cluster",
+    "namespace": "fieldeagles"
+  },
+  "spec": {
+    "ports": [
+      {"port": 5555}
+    ]
+  }
+}

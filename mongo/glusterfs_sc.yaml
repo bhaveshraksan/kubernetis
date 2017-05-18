@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: heketi-secret
+  namespace: fieldeagles
+data:
+  # base64 encoded password. E.g.: echo -n "mypassword" | base64
+  key: bXlwYXNzd29yZA==
+type: kubernetes.io/glusterfs
+--
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: slow
+provisioner: kubernetes.io/glusterfs
+parameters:
+  resturl: "http://10.0.2.1:8080"
+  clusterid: "630372ccdc720a92c681fb928f27b53f"
+  restuser: "admin"
+  secretNamespace: "fieldeagles"
+  secretName: "heketi-secret"
+  gidMin: "40000"
+  gidMax: "50000"
+  volumetype: "replicate:3"
